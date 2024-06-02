@@ -1,1 +1,83 @@
-<p>defer-options works!</p>
+<app-title title="Defer Options - Triggers" />
+
+<section>
+  <h1 class="text-xl">Interacciones</h1>
+  <hr class="my-2" />
+
+  @defer(on interaction){
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <!-- esto es por el ng-content -->
+    <span class="p-2">On Interaction</span>
+  </app-heavy-loaders-fast>
+  }@placeholder {
+  <!-- Solo al dar click aqui el compoenente de arriba se crea y carga -->
+  <div class="w-full h-20 bg-purple-100">Haz click en el div</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  <button
+    #btnInteraction
+    class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2"
+  >
+    Click me
+  </button>
+
+  @defer(on interaction(btnInteraction)){
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <span class="p-2">On Interaction</span>
+  </app-heavy-loaders-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100">PlanceHolder</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on hover){
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <span class="p-2">On Hover</span>
+  </app-heavy-loaders-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100">PlanceHolder</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on immediate){
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <span class="p-2">On immediate</span>
+  </app-heavy-loaders-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100">PlanceHolder</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on timer(2000)){
+  <app-heavy-loaders-fast cssClass="bg-orange-500 h-20">
+    <span class="p-2">On Timer</span>
+  </app-heavy-loaders-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100">Timer 2 segundos</div>
+  }
+</section>
+
+<section>
+  <hr class="my-2" />
+
+  @defer(on hover; prefetch on idle){
+  <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+    <span class="p-2">On Hover and prefetched</span>
+  </app-heavy-loaders-fast>
+  }@placeholder {
+  <div class="w-full h-20 bg-purple-100">On hover prefetch</div>
+  }
+</section>
