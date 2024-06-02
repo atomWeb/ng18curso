@@ -1,1 +1,60 @@
-<p>control-flow works!</p>
+<app-title title="Control FLow"/>
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-xl font-bold mb-5">if: {{ showContent() }}</h2>
+
+    <button
+      class="p-2 bg-blue-500 rounded text-white"
+      (click)="toggleContent()"
+    >
+      Click me!
+    </button>
+
+    @if(showContent()){
+    <p>Hola</p>
+    } @else {
+    <p>**********</p>
+    }
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-xl font-bold mb-5">Grade: {{ grade() }}</h2>
+
+    @switch (grade()) { @case ('A') {
+    <p>Aprobado con honores</p>
+    } @case ('B') {
+    <p>Aprobado</p>
+    } @default {
+    <p>Reprobado</p>
+    } }
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-xl font-bold mb-5">Front Frameworks</h2>
+    <ul>
+      @for (framework of frontFrameworks(); track $index; let i = $index,
+      primero = $first, ultimo = $last, par = $even, impar = $odd, total =
+      $count) {
+      <li [class]="{
+        'bg-red-200': par && !primero && !ultimo,
+        'bg-pink-100': impar && !primero && !ultimo,
+        'bg-blue-100':primero || ultimo
+        }">
+        {{ i + 1 }}/{{total}} - {{ framework }}
+      </li>
+      }
+    </ul>
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-xl font-bold mb-5">Front Frameworks 2</h2>
+    <ul>
+      @for (framework of frontFrameworks2(); track $index) {
+      <li>{{ framework }}</li>
+      }@empty {
+      <li>No hay ningun framework para mostrar</li>
+      }
+    </ul>
+  </div>
+</section>

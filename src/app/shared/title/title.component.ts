@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
+  selector: 'app-title',
   standalone: true,
   imports: [],
-  templateUrl: './title.component.html',
-  styles: ``
+  template: ` <h1 class="text-3xl mb-5">{{title()}}</h1> `,
+  styles: ``,
 })
 export class TitleComponent {
-
+  public title = input<string>('');
 }
