@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TitleComponent } from '@shared/title/title.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
-import { User } from '../../../interfaces/req-response';
+// import { User } from '../../../interfaces/req-response';
 import { UsersService } from '../../../services/users.service';
 
 @Component({
